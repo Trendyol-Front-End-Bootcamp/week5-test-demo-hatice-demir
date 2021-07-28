@@ -2,7 +2,7 @@
 ## Case 1: There should be a 'divide' function which takes 2 paramaters.
 * Tests
   * It should make division correctly. 
-  * If one of the paramaters is not a number, throw "not invalid input" error.
+  * If one of the paramaters is not a number, throw "invalid input" error.
   * If the divisor is zero, throw "division by zero" error.
 ## Case 2: A function which takes a string paramater and returns the pascal case of that string.(First letter of the each word should be uppercase)
 * Tests
