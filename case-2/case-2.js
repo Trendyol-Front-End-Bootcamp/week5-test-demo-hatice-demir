@@ -1,5 +1,17 @@
-const convertToUpper = (title) => {
-  return title.charAt(0).toUpperCase() + title.slice(1);
+const toPascalCase = (givenString) => {
+  return (
+    givenString
+      ?.split(" ")
+      .map((word) =>
+        isConjunction(word)
+          ? word
+          : word.charAt(0).toUpperCase() + word.slice(1)
+      )
+      .join(" ") || ""
+  );
 };
 
-export default convertToUpper;
+const isConjunction = (word) => {
+  return word === "and" || word === "or";
+};
+export default toPascalCase;
