@@ -1,11 +1,11 @@
-const divide = (a, b) => {
-  if (isNaN(a) || isNaN(b)) {
-    throw new Error("is not valid number");
+const divide = (dividend, divisor) => {
+  if (isNaN(dividend) || isNaN(divisor)) {
+    throw new Error("invalid number");
   }
-  if (b === 0) {
+  if (divisor === 0) {
     throw new Error("divison by zero");
   }
-  return a / b;
+  return dividend / divisor;
 };
 
 export default divide;
