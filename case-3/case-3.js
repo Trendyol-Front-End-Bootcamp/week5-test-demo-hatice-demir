@@ -1,14 +1,35 @@
 import axios from "axios";
+
 const fetchData = async () => {
-  const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-  const newData = new Array(res.data.length).fill(0);
-  for (let i = 0; i < res.data.length; i++) {
-    newData[res.data.userId]++;
+  const URL = "https://jsonplaceholder.typicode.com/posts";
+  let hashMap = new Map([
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [4, 0],
+    [5, 0],
+    [6, 0],
+    [7, 0],
+    [8, 0],
+    [9, 0],
+    [10, 0],
+  ]);
+
+  try {
+    await axios.get(URL).then((res) => console.log(res));
+    /* res.forEach((postObj) => {
+      let key = hasmpostObj.userId;
+      let value = hashMap.get(key);
+      hashMap.set(key, hashMap.get(value++));
+    });
+    console.log(hashMap);*/
+  } catch (error) {
+    console.log(error);
   }
-  console.log(newData);
-  const sortedData = newData.sort((a, b) => b - a);
-  console.log(sortedData[0]);
-  console.log("here");
 };
 
-export default fetchData;
+const App = async () => {
+  await fetchData();
+};
+
+App();
