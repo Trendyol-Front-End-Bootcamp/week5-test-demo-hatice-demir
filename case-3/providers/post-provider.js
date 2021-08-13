@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const URL = "https://jsonplaceholder.typicode.com/posts";
 const getPosts = async () => {
   try {
@@ -10,4 +9,5 @@ const getPosts = async () => {
   }
 };
 
+console.log(getPosts());
 export default getPosts;

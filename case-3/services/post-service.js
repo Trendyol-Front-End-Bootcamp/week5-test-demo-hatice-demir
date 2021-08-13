@@ -1,22 +1,25 @@
 import getPosts from "../providers/post-provider.js";
 
-console.log(await getPosts());
+let hashMap = new Map();
+let userIDwithMaxPost = -1;
+let maxPosts = -1;
 
-/* let hashMap = new Map([
-  [1, 0],
-  [2, 0],
-  [3, 0],
-  [4, 0],
-  [5, 0],
-  [6, 0],
-  [7, 0],
-  [8, 0],
-  [9, 0],
-  [10, 0],
-]); */
-/* res.forEach((postObj) => {
-      let key = hasmpostObj.userId;
-      let value = hashMap.get(key);
-      hashMap.set(key, hashMap.get(value++));
-    });
-    console.log(hashMap);*/
+const setHashMap = async () => {
+  const POSTS = await getPosts();
+  POSTS?.forEach((postObj) => {
+    let key = postObj.userId;
+    hashMap.get(key) === undefined
+      ? hashMap.set(key, 1)
+      : hashMap.set(key, hashMap.get(key) + 1);
+  });
+};
+
+const findUserID = async () => {
+  await setHashMap();
+  hashMap.forEach((key, value) => {
+    if (value > maxPosts) userIDwithMaxPost = key;
+  });
+};
+
+await findUserID();
+console.log(userIDwithMaxPost);
